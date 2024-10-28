@@ -96,6 +96,8 @@ d. This will:
 npm run dev
 # or
 yarn dev
+# or
+bun run dev
 ```
 
 ## 📚 Database Schema
