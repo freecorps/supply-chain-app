@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AppSidebar } from "@/components/sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import CheckUser from "@/components/checkUser";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,6 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <SidebarProvider>
+      <CheckUser />
       <AppSidebar />
       <main className="min-h-screen flex flex-col">
         <SidebarTrigger />

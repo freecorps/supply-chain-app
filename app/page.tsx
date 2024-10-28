@@ -1,5 +1,6 @@
-import React from "react";
+"use client";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   MapPin,
   Box,
@@ -7,9 +8,13 @@ import {
   ShieldCheck,
   LineChart,
   Building2,
+  ArrowRight,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const HomePage = () => {
+  const router = useRouter();
+
   const features = [
     {
       icon: <Box className="w-12 h-12 text-blue-600" />,
@@ -56,6 +61,14 @@ const HomePage = () => {
     { name: "Delivery", color: "bg-orange-500" },
   ];
 
+  const handleGetStarted = () => {
+    router.push("/login");
+  };
+
+  const handleDashboard = () => {
+    router.push("/dashboard");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -70,12 +83,17 @@ const HomePage = () => {
               real-time tracking and blockchain verification
             </p>
             <div className="flex justify-center gap-4">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+              <Button
+                size="lg"
+                className="bg-blue-600 hover:bg-blue-700"
+                onClick={handleGetStarted}
+              >
                 Get Started
-              </button>
-              <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
-                Learn More
-              </button>
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline" size="lg" onClick={handleDashboard}>
+                Go to Dashboard
+              </Button>
             </div>
           </div>
         </div>
@@ -135,9 +153,15 @@ const HomePage = () => {
             Join organizations worldwide using our platform to ensure
             transparency and efficiency in their supply chains
           </p>
-          <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+          <Button
+            variant="secondary"
+            size="lg"
+            onClick={handleGetStarted}
+            className="bg-white text-blue-600 hover:bg-gray-100"
+          >
             Start Now
-          </button>
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
       </div>
     </div>

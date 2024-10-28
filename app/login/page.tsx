@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
@@ -64,11 +64,14 @@ export default function AuthPage() {
 
       if (isLogin) {
         toast("Logged in successfully");
+        window.location.href = "/dashboard";
+        return;
       } else {
-        toast("Account created successfully");
+        toast(
+          "Account created successfully\nPlease check your email to verify your account"
+        );
+        return;
       }
-
-      toast("Logged in successfully");
     } catch (error) {
       toast.error("Failed to log in");
     }
